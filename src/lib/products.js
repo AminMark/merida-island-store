@@ -19,11 +19,7 @@ export function loadProducts() {
     return parsedProducts.map((product) => {
       const defaultProduct = defaultById.get(product.id);
       return defaultProduct
-        ? {
-            ...product,
-            imageUrl: defaultProduct.imageUrl,
-            inStock: defaultProduct.inStock,
-          }
+        ? { ...product, imageUrl: defaultProduct.imageUrl }
         : product;
     });
   } catch {
