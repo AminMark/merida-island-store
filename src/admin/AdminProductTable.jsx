@@ -33,13 +33,13 @@ export function AdminProductTable({
           <tbody>
             {products.map((product) => (
               <tr key={product.id}>
-                <td>
+                <td data-label="Image">
                   <img className="table-thumb" src={product.imageUrl} alt="" />
                 </td>
-                <td>{product.name}</td>
-                <td>{product.category}</td>
-                <td>${Number(product.price).toFixed(2)}</td>
-                <td>
+                <td data-label="Name">{product.name}</td>
+                <td data-label="Category">{product.category}</td>
+                <td data-label="Price">${Number(product.price).toFixed(2)}</td>
+                <td data-label="Stock">
                   <button
                     className={`stock-toggle ${product.inStock ? "in" : "out"}`}
                     type="button"
@@ -48,8 +48,8 @@ export function AdminProductTable({
                     {product.inStock ? "In Stock" : "Sold Out"}
                   </button>
                 </td>
-                <td>{product.bestSeller ? "Yes" : "No"}</td>
-                <td>
+                <td data-label="Best Seller">{product.bestSeller ? "Yes" : "No"}</td>
+                <td data-label="Actions">
                   <div className="table-actions">
                     <button type="button" onClick={() => onEdit(product)}>
                       <Pencil size={15} /> Edit
