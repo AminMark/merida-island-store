@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { compressProductImage } from "../lib/imageCompression";
 import { createProductId } from "../lib/products";
 
 const emptyForm = {
@@ -13,9 +14,15 @@ const emptyForm = {
 
 export function AdminProductForm({ editingProduct, onCancel, onSave }) {
   const [form, setForm] = useState(emptyForm);
+  const [imageMessage, setImageMessage] = useState("");
+  const [imageError, setImageError] = useState("");
+  const [isCompressing, setIsCompressing] = useState(false);
 
   useEffect(() => {
     setForm(editingProduct || emptyForm);
+    setImageMessage(editingProduct?.imageUrl ? "Current product image" : "");
+    setImageError("");
+    setIsCompressing(false);
   }, [editingProduct]);
 
   function updateField(field, value) {
@@ -25,15 +32,44 @@ export function AdminProductForm({ editingProduct, onCancel, onSave }) {
     }));
   }
 
+  async function handleImageUpload(event) {
+    const file = event.target.files?.[0];
+    if (!file) {
+      return;
+    }
+
+    setImageError("");
+    setImageMessage("Optimizing image...");
+    setIsCompressing(true);
+
+    try {
+      const optimizedImage = await compressProductImage(file);
+      updateField("imageUrl", optimizedImage.dataUrl);
+      setImageMessage(`Optimized: ${optimizedImage.summary}`);
+    } catch (error) {
+      setImageError(error.message);
+      setImageMessage("");
+    } finally {
+      setIsCompressing(false);
+    }
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
+    if (!form.imageUrl) {
+      setImageError("Please upload a product photo.");
+      return;
+    }
+
     onSave({
       ...form,
       id: form.id || createProductId(form.name),
       price: Number(form.price),
-      imageUrl: form.imageUrl || "/products/radiance-serum.svg",
+      imageUrl: form.imageUrl,
     });
     setForm(emptyForm);
+    setImageMessage("");
+    setImageError("");
   }
 
   return (
@@ -93,14 +129,35 @@ export function AdminProductForm({ editingProduct, onCancel, onSave }) {
           </select>
         </label>
       </div>
-      <label>
-        Image URL
-        <input
-          value={form.imageUrl}
-          onChange={(event) => updateField("imageUrl", event.target.value)}
-          placeholder="/products/radiance-serum.svg"
-        />
+      <label className="image-upload-field">
+        Product photo
+        <span className="upload-dropzone">
+          <strong>{form.imageUrl ? "Replace image" : "Upload image"}</strong>
+          <small>Compressed automatically for faster web loading</small>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+            required={!form.imageUrl}
+          />
+        </span>
       </label>
+      {form.imageUrl && (
+        <div className="image-preview">
+          <img src={form.imageUrl} alt="Product preview" />
+          <span>{imageMessage || "Ready to save"}</span>
+        </div>
+      )}
+      {imageMessage && !form.imageUrl && (
+        <p className="form-note" aria-live="polite">
+          {imageMessage}
+        </p>
+      )}
+      {imageError && (
+        <p className="form-error" aria-live="polite">
+          {imageError}
+        </p>
+      )}
       <label className="check-row">
         <input
           type="checkbox"
@@ -115,8 +172,12 @@ export function AdminProductForm({ editingProduct, onCancel, onSave }) {
             Cancel
           </button>
         )}
-        <button className="primary-button" type="submit">
-          {editingProduct ? "Save Product" : "Add Product"}
+        <button className="primary-button" type="submit" disabled={isCompressing}>
+          {isCompressing
+            ? "Optimizing..."
+            : editingProduct
+              ? "Save Product"
+              : "Add Product"}
         </button>
       </div>
     </form>
