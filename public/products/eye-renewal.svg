@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700" role="img" aria-label="Eye Renewal Cream">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fffdfb"/><stop offset="1" stop-color="#ead1ca"/></linearGradient><linearGradient id="jar" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff7f4"/><stop offset="1" stop-color="#c99389"/></linearGradient></defs>
+  <rect width="900" height="700" fill="url(#bg)"/><circle cx="205" cy="510" r="145" fill="#f5dfdb"/><circle cx="690" cy="185" r="122" fill="#fff" opacity=".58"/>
+  <rect x="315" y="260" width="270" height="58" rx="22" fill="#ba7c75"/><rect x="292" y="312" width="316" height="164" rx="58" fill="url(#jar)" stroke="#fff" stroke-width="10"/><path d="M330 394c52-44 187-44 240 0-53 45-188 45-240 0z" fill="#fff8f4" opacity=".78"/><circle cx="450" cy="394" r="31" fill="#c4877d"/><text x="450" y="536" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" fill="#272321" letter-spacing="3">EYE RENEWAL</text>
+</svg>

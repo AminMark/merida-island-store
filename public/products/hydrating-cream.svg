@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700" role="img" aria-label="Hydrating Cream">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fffdf9"/><stop offset="1" stop-color="#ead8ce"/></linearGradient><linearGradient id="jar" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff9f5"/><stop offset="1" stop-color="#d7a99d"/></linearGradient></defs>
+  <rect width="900" height="700" fill="url(#bg)"/><rect x="164" y="480" width="572" height="48" rx="24" fill="#d7b8aa" opacity=".35"/><circle cx="720" cy="210" r="130" fill="#f7e0dc"/>
+  <rect x="303" y="240" width="294" height="72" rx="28" fill="#c48b80"/><rect x="274" y="302" width="352" height="206" rx="66" fill="url(#jar)" stroke="#fff" stroke-width="10"/><rect x="329" y="342" width="242" height="108" rx="28" fill="#fffaf7" opacity=".72"/><text x="450" y="391" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="38" fill="#272321">MI</text><text x="450" y="428" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" fill="#272321" letter-spacing="3">CREAM</text>
+</svg>

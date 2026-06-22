@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700" role="img" aria-label="Gentle Cleanser">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff8f5"/><stop offset="1" stop-color="#f2d8d2"/></linearGradient><linearGradient id="tube" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f8d7d2"/><stop offset="1" stop-color="#fff8f5"/></linearGradient></defs>
+  <rect width="900" height="700" fill="url(#bg)"/><circle cx="205" cy="188" r="116" fill="#fff" opacity=".6"/><circle cx="700" cy="520" r="150" fill="#efc6c1" opacity=".55"/>
+  <rect x="331" y="150" width="238" height="410" rx="52" fill="url(#tube)" stroke="#fff" stroke-width="10"/><rect x="354" y="121" width="192" height="48" rx="12" fill="#c98e83"/><rect x="370" y="450" width="160" height="88" rx="20" fill="#c78b81" opacity=".35"/><text x="450" y="300" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="42" fill="#272321">MI</text><text x="450" y="348" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" fill="#272321" letter-spacing="3">CLEANSER</text>
+</svg>
